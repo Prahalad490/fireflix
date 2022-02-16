@@ -1,0 +1,22 @@
+@import "./colors";
+
+.profile-pop-up-container {
+  position: absolute;
+  right: 20px;
+  top: 60px;
+  background-color: rgb(31, 31, 31);
+  color: $primary-white;
+  padding: 20px 30px;
+  border-radius: 5px;
+  height: 100px;
+
+  & > p {
+    padding: 10px 0;
+    transition: all ease-in 0.5s;
+    cursor: pointer;
+  }
+
+  & > p:hover {
+    border-bottom: 1px solid $primary-red;
+  }
+}

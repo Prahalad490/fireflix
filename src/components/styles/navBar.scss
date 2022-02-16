@@ -1,0 +1,97 @@
+@import "colors";
+
+.nav {
+  position: fixed;
+  width: 100%;
+  height: 50px;
+  z-index: 1;
+  transition-timing-function: ease-in;
+  transition: all 0.5s;
+
+  &.nav-black {
+    background-color: $primary-black;
+  }
+
+  & .nav-content {
+    display: flex;
+    justify-content: space-around;
+
+    // & .netflix-logo {
+    //   height: 3rem;
+    //   position: fixed;
+    //   left: 0;
+    //   object-fit: contain;
+    //   padding-left: 20px;
+    //   cursor: pointer;
+    // }
+
+    & .netflix-logo {
+      height: 3rem;
+      position: fixed;
+      left: 0;
+      object-fit: contain;
+      padding-left: 20px;
+      padding-top: 10px;
+      cursor: pointer;
+      color: $primary-red;
+      font-size: 1.5rem;
+      font-weight: 800;
+    }
+
+    & .nav-links {
+      position: fixed;
+      left: 45%;
+      top: 17px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 120px;
+
+      & > h3 {
+        font-size: 0.8rem;
+        font-weight: 800;
+        color: $primary-red;
+        cursor: pointer;
+        transition: transform 1s;
+      }
+
+      & > h3:hover {
+        color: $primary-white;
+        transform: scale(1.05);
+      }
+
+      @media screen and (max-width: 400px) {
+        display: none;
+      }
+    }
+
+    & .userLogo {
+      height: 2rem;
+      margin-top: 10px;
+      border-radius: 5px;
+      position: fixed;
+      right: 20px;
+      object-fit: contain;
+      cursor: pointer;
+    }
+
+    & .nav-signin {
+      height: 2rem;
+      margin-top: 10px;
+      border-radius: 5px;
+      position: fixed;
+      right: 20px;
+      object-fit: contain;
+      cursor: pointer;
+      border: none;
+      padding: 10px 20px;
+      background-color: $primary-red;
+      color: $primary-white;
+    }
+
+    & .nav-signin:hover {
+      background-color: $primary-white;
+      color: $primary-red;
+    }
+  }
+}

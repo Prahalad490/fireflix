@@ -1,0 +1,65 @@
+@import "../../components/styles/colors";
+
+.signin-screen {
+  z-index: 1;
+  padding: 40px;
+  color: $primary-white;
+  margin-left: 10px;
+  position: absolute;
+  top: 20%;
+  text-align: left;
+  background-color: $primary-black;
+  width: 300px;
+
+  @media screen and (max-width: 400px) {
+    width: 230px;
+    top: 13%;
+  }
+
+  & > h1 {
+    margin-bottom: 30px;
+  }
+
+  & > h4 {
+    margin-top: 20px;
+
+    & .span1 {
+      color: #ffffff82;
+      text-decoration: none;
+    }
+
+    & .span2:hover {
+      text-decoration: underline;
+      cursor: pointer;
+    }
+  }
+
+  & > form {
+    display: flex;
+    flex-direction: column;
+  }
+
+  & > form > input {
+    outline: none;
+    padding: 10px;
+    height: 30px;
+    border: none;
+    margin-bottom: 10px;
+    border-radius: 5px;
+  }
+
+  & > form > .checkbox:checked {
+    color: $secondary-red;
+  }
+
+  & > form > button {
+    padding: 16px 20px;
+    margin-top: 20px;
+    border: none;
+    font-size: 1.3rem;
+    color: $primary-white;
+    background-color: $secondary-red;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+}
