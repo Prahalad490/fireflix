@@ -8,15 +8,20 @@
   color: $primary-white;
   padding: 20px 30px;
   border-radius: 5px;
-  height: 100px;
+  height: 85px;
 
-  & > p {
+  & .profile-menu-item {
     padding: 10px 0;
     transition: all ease-in 0.5s;
     cursor: pointer;
   }
 
-  & > p:hover {
+  & > a {
+    color: $primary-white;
+    text-decoration: none;
+  }
+
+  & .profile-menu-item:hover {
     border-bottom: 1px solid $primary-red;
   }
 }

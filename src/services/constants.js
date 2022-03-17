@@ -10,4 +10,16 @@ export const TMDB_ENDPOINTS = {
   fetchHorrorMovies: `/discover/movie?api_key=${process.env.REACT_APP_TMDB_API_KEY}&with_genres=27`,
   fetchRomanceMovies: `/discover/movie?api_key=${process.env.REACT_APP_TMDB_API_KEY}&with_genres=10749`,
   fetchDocumentaries: `/discover/movie?api_key=${process.env.REACT_APP_TMDB_API_KEY}&with_genres=99`,
+
+  getTvShowDetails: (id) =>
+    `/tv/${id}?api_key=${process.env.REACT_APP_TMDB_API_KEY}&language=en-US`,
+  getSimilarTvShows: (id) =>
+    `/tv/${id}/similar?api_key=${process.env.REACT_APP_TMDB_API_KEY}&language=en-US&page=1`,
+  getTvShowEpisodes: (id, season) =>
+    `/tv/${id}/season/${season}?api_key=${process.env.REACT_APP_TMDB_API_KEY}&language=en-US`,
+
+  getMovieDetails: (id) =>
+    `/movie/${id}?api_key=${process.env.REACT_APP_TMDB_API_KEY}&language=en-US`,
+  getSimilarMovies: (id) =>
+    `/movie/${id}/similar?api_key=${process.env.REACT_APP_TMDB_API_KEY}&language=en-US&page=1`,
 };

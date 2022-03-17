@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from "react";
 import "./styles/banner.scss";
-import { getPopularMovies } from "../services/movies";
-import { TMDB_IMAGE_BASE_URL } from "../constants";
+import { getPopularTvShows } from "../services/tvShow";
+import { TMDB_IMAGE_BASE_URL } from "../services/constants";
 
 function Banner() {
   const [movie, setMovie] = useState({});
 
   useEffect(() => {
     async function fetchData() {
-      const response = await getPopularMovies();
+      const response = await getPopularTvShows();
       setMovie(
         response?.results[
           Math.floor(Math.random() * response?.results?.length - 1)

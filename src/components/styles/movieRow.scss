@@ -1,6 +1,24 @@
+@import "colors";
+
 .row {
   color: white;
   margin-left: 20px;
+  margin-right: 20px;
+
+  .row-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    & > a {
+      color: #fff;
+      text-decoration: none;
+
+      &:hover {
+        color: $primary-red;
+      }
+    }
+  }
 
   & .row-posters {
     display: flex;
@@ -8,11 +26,25 @@
     overflow-x: scroll;
     padding: 20px;
 
+    & > a {
+      color: #fff;
+      text-decoration: none;
+
+      & > p {
+        padding-right: 10px;
+      }
+
+      & > p:last-child {
+        color: #525252;
+      }
+    }
+
     & .row-poster {
       max-height: 100px;
       object-fit: contain;
       margin-right: 10px;
       transition: transform 450ms;
+      border-radius: 5px;
     }
 
     & .row-poster:hover {
@@ -24,6 +56,10 @@
       transform: scale(1.09);
       margin-right: 20px;
       max-height: 250px;
+
+      @media screen and (max-width: 400px) {
+        max-height: 200px;
+      }
     }
   }
 

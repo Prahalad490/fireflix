@@ -5,6 +5,7 @@ import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
 } from "firebase/auth";
+import { createUser } from "../utils/userCreateFirestore";
 
 function SiginScreen() {
   const [email, setEmail] = useState("");
@@ -15,7 +16,10 @@ function SiginScreen() {
     e.preventDefault();
     if (signUpClicked) {
       createUserWithEmailAndPassword(auth, email, password)
-        .then((res) => console.log(res))
+        .then((res) => {
+          createUser(res.user.email, res.user.uid);
+          console.log(res);
+        })
         .catch((error) => {
           alert(error.message);
         });

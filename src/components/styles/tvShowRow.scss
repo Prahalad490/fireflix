@@ -1,0 +1,57 @@
+@import "./colors";
+
+.tv-show-row {
+  padding: 30px;
+
+  & .accordion-container {
+    background-color: $primary-black;
+
+    & .Mui-expanded {
+      color: $primary-white;
+    }
+
+    & .tv-show-row-button {
+      outline: none;
+      border: none;
+      color: $primary-red;
+      padding: 0;
+      text-transform: none;
+
+      &:hover {
+        outline: none;
+        border: none;
+        transform: none;
+        background-color: $primary-black;
+      }
+    }
+
+    & .tv-show-row-menu-container {
+      & .MuiMenuItem-root {
+        background-color: $primary-black;
+        color: $primary-white;
+      }
+    }
+
+    & .tv-show-row-grid-container {
+      margin-top: 1px;
+      & .row-poster {
+        max-height: 100px;
+        object-fit: contain;
+        margin-right: 10px;
+        transition: transform 450ms;
+        border-radius: 5px;
+      }
+
+      & .row-poster:hover {
+        transform: scale(1.08);
+        opacity: 1;
+      }
+
+      & .tv-show-row-link {
+        text-decoration: none;
+
+        color: $primary-white;
+      }
+    }
+  }
+}

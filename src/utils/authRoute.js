@@ -1,11 +1,18 @@
 import React, { useEffect, useState } from "react";
 import { Outlet } from "react-router-dom";
 import LoginScreen from "../pages/LoginScreen";
-import { auth } from "../utils/firebase";
+import { auth, db } from "../utils/firebase";
 import { onAuthStateChanged } from "firebase/auth";
 import { useDispatch, useSelector } from "react-redux";
-import { login, logout, userSelect } from "../features/user/userSlice";
+import {
+  login,
+  logout,
+  userSelect,
+  updateImage,
+} from "../features/user/userSlice";
 import { Loader } from "../components/index";
+
+import { doc, onSnapshot } from "firebase/firestore";
 
 function AuthRoute() {
   const isAuth = useSelector(userSelect);
@@ -22,6 +29,15 @@ function AuthRoute() {
             email: userAuth.email,
           })
         );
+        const docRef = doc(db, "users", userAuth.uid);
+
+        onSnapshot(docRef, (snapshot) => {
+          dispatch(
+            updateImage({
+              imageUrl: snapshot.data().imageUrl,
+            })
+          );
+        });
       } else {
         dispatch(logout);
       }

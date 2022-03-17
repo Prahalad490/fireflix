@@ -28,7 +28,12 @@ function LoginScreen() {
           <div className="login-screen-input">
             <form>
               <input type="email" placeholder="Email Address" />
-              <button className="login-button">GET STARTED</button>
+              <button
+                className="login-button"
+                onClick={() => setSignInScreenShow(true)}
+              >
+                GET STARTED
+              </button>
             </form>
           </div>
         </div>

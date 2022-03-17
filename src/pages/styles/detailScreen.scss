@@ -1,0 +1,98 @@
+@import "../../components/styles/colors";
+
+.detail-screen {
+  & .detail-screen-container {
+    margin-top: 0px;
+    // height: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+
+    & .poster-grid-container {
+      text-align: center;
+      margin-top: 100px;
+      display: flex;
+      justify-content: center;
+      & .img-poster {
+        width: 80%;
+        max-width: 250px;
+        object-fit: contain;
+      }
+
+      & .img-poster-not-available {
+        width: 200px;
+        height: 250px;
+        object-fit: contain;
+        background-color: #000;
+        color: $primary-red;
+      }
+
+      & .background-overlay {
+        background-size: cover;
+        background-position: center center;
+        filter: blur(10px) brightness(0.6);
+        width: 100%;
+        position: absolute;
+        top: 0;
+        right: 0;
+        height: 70%;
+        z-index: -1;
+      }
+    }
+
+    & .detail-grid-container {
+      color: $primary-white;
+      margin-top: 50px;
+      padding: 10px 20px;
+
+      @media screen and (max-width: 550px) {
+        padding-left: 30px;
+        width: 100%;
+      }
+
+      & .detail-grid-body-genre {
+        // display: flex;
+        // flex-direction: row;
+        margin-top: 10px;
+
+        & > div > p {
+          padding-right: 10px;
+          margin-right: 10px;
+          font-size: 0.85rem;
+          margin-top: 10px;
+        }
+      }
+
+      & > p {
+        margin-top: 40px;
+        max-width: 500px;
+        font-size: 0.9rem;
+      }
+      & .detail-grid-body-buttons {
+        margin-top: 20px;
+        & > a > button {
+          cursor: pointer;
+          color: #fff;
+          outline: none;
+          border: none;
+          font-weight: 700;
+          border-radius: 0.2vw;
+          padding-left: 2rem;
+          padding-right: 2rem;
+          margin-right: 1rem;
+          padding-top: 0.5rem;
+          background-color: rgba(51, 51, 51, 0.5);
+          padding-bottom: 0.5rem;
+          margin-top: 10px;
+        }
+
+        & > a > button:hover {
+          color: #000;
+          background-color: #e6e6e6;
+          transition: all 0.2s;
+        }
+      }
+    }
+  }
+}

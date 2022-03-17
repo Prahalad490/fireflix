@@ -1,0 +1,97 @@
+@import "./colors";
+
+.modal-box {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 50%;
+  background-color: #111;
+  color: #fff;
+  box-shadow: 24px;
+  padding: 25px;
+  border-radius: 10px;
+  max-height: 60%;
+  height: 60%;
+  overflow: hidden;
+
+  @media screen and (max-width: 600px) {
+    width: 80%;
+  }
+
+  & .search-input {
+    outline: none;
+    padding: 10px;
+    height: 20px;
+    border: none;
+    border-radius: 5px;
+    width: 95%;
+    font-size: 1rem;
+  }
+
+  & .select-input {
+    width: 100%;
+    background-color: #fff;
+    outline: none;
+    height: 40px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+  }
+
+  & .result-div {
+    height: 90%;
+    margin-top: 5px;
+    &::-webkit-scrollbar {
+      width: 10px;
+    }
+    &::-webkit-scrollbar-track {
+      background: #1a1a1a;
+    }
+    &::-webkit-scrollbar-thumb {
+      background: #a90000;
+      border-radius: 10px;
+    }
+    &::-webkit-scrollbar-thumb:hover {
+      background: #d10000;
+    }
+
+    & > a {
+      color: $primary-white;
+      text-decoration: none;
+      & > li {
+        list-style: none;
+        margin-left: 0px;
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: center;
+        margin-bottom: 10px;
+        cursor: pointer;
+
+        &:hover {
+          background: #1a1a1a;
+        }
+
+        &:hover > div > p {
+          color: $primary-red;
+        }
+
+        & > div {
+          margin-left: 10px;
+
+          & > div {
+            display: flex;
+            flex-direction: row;
+
+            & > p {
+              margin-right: 10px;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+            }
+          }
+        }
+      }
+    }
+  }
+}

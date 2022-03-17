@@ -38,29 +38,57 @@
       font-weight: 800;
     }
 
-    & .nav-links {
+    & .menuIcon {
+      height: 2rem;
+      margin-top: 14px;
+      border-radius: 5px;
       position: fixed;
-      left: 45%;
-      top: 17px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      width: 120px;
+      right: 115px;
+      object-fit: contain;
+      cursor: pointer;
+      color: $primary-white;
+      display: none;
+      @media screen and (max-width: 600px) {
+        display: inline-block;
+      }
+    }
 
-      & > h3 {
-        font-size: 0.8rem;
-        font-weight: 800;
+    & .movie-nav-link {
+      height: 2rem;
+      margin-top: 14px;
+      border-radius: 5px;
+      position: fixed;
+      right: 235px;
+      object-fit: contain;
+      cursor: pointer;
+      color: $primary-white;
+      font-size: 0.9rem;
+
+      &:hover {
         color: $primary-red;
-        cursor: pointer;
-        transition: transform 1s;
       }
 
-      & > h3:hover {
-        color: $primary-white;
-        transform: scale(1.05);
+      @media screen and (max-width: 600px) {
+        display: none;
+      }
+    }
+
+    & .tv-nav-link {
+      height: 2rem;
+      margin-top: 14px;
+      border-radius: 5px;
+      position: fixed;
+      right: 155px;
+      object-fit: contain;
+      cursor: pointer;
+      color: $primary-white;
+      font-size: 0.9rem;
+
+      &:hover {
+        color: $primary-red;
       }
 
-      @media screen and (max-width: 400px) {
+      @media screen and (max-width: 600px) {
         display: none;
       }
     }
@@ -73,6 +101,31 @@
       right: 20px;
       object-fit: contain;
       cursor: pointer;
+    }
+
+    & .nav-search {
+      height: 2rem;
+      margin-top: 10px;
+      border-radius: 5px;
+      position: fixed;
+      right: 70px;
+      object-fit: contain;
+      cursor: pointer;
+      background-color: transparent;
+      border: none;
+      outline: none;
+      color: $primary-white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      & > p {
+        @media screen and (max-width: 600px) {
+          display: none;
+        }
+      }
+      &:hover {
+        color: $primary-red;
+      }
     }
 
     & .nav-signin {

@@ -1,25 +1,26 @@
 import React, { useCallback, useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
-import { getOneMovie } from "../services/movies";
+import { getOneTvShows } from "../services/tvShow";
 import { TMDB_IMAGE_BASE_URL, TMDB_ENDPOINTS } from "../services/constants";
 import "./styles/detailScreen.scss";
-import { NavBar, Loader, MovieRow } from "../components/index";
+import { NavBar, Loader, MovieRow, TvShowRow } from "../components/index";
 
 import Grid from "@mui/material/Grid";
 
-function MovieDetailScreen() {
+function TvshowDetailScreen() {
   const { id } = useParams();
 
   const [data, setData] = useState({});
   const [posterUrl, setPosterUrl] = useState("");
   const [isLoading, setIsLoading] = useState(true);
 
-  const getMovie = useCallback(async () => {
+  const getTvShow = useCallback(async () => {
     try {
       setPosterUrl("");
       setIsLoading(true);
-      const response = await getOneMovie(id);
+      const response = await getOneTvShows(id);
       setData(response);
+      console.log(response);
       setPosterUrl(`${TMDB_IMAGE_BASE_URL}${response?.poster_path}`);
       setIsLoading(false);
       return response;
@@ -29,8 +30,8 @@ function MovieDetailScreen() {
   }, [id]);
 
   useEffect(() => {
-    getMovie();
-  }, [getMovie]);
+    getTvShow();
+  }, [getTvShow]);
 
   return isLoading ? (
     <Loader />
@@ -59,11 +60,12 @@ function MovieDetailScreen() {
             ></div>
           </Grid>
           <Grid item md={8} sm={8} className="detail-grid-container">
-            <h1>{data?.title || data?.name || data?.original_name}</h1>
+            <h1>{data?.name}</h1>
+
             <Grid container className="detail-grid-body-genre">
               <Grid item>
                 <p style={{ borderRight: "1px solid white" }}>
-                  {data?.release_date?.substring(0, 4)}{" "}
+                  {data?.first_air_date?.substring(0, 4)}{" "}
                 </p>
               </Grid>
               {data?.genres?.map((genre) => (
@@ -77,23 +79,29 @@ function MovieDetailScreen() {
             </Grid>
             <p>{data?.overview}</p>
             <div className="detail-grid-body-buttons">
-              <Link to={`/movie/streaming/${data.id}`}>
+              <Link
+                to={`/tvshow/streaming/${data.id}`}
+                state={{
+                  season: `${data.last_episode_to_air.season_number}`,
+                  episode: `${data.last_episode_to_air.episode_number}`,
+                  noOfSeasons: `${data.number_of_seasons}`,
+                }}
+              >
                 <button>Play</button>
               </Link>
-              {/* <button>Watch Trailer</button> */}
+              {/* <Link><button>Watch Trailer</button></Link> */}
             </div>
           </Grid>
         </Grid>
       </div>
-      <div>
-        <MovieRow
-          title="Similar Movies"
-          fetchUrl={TMDB_ENDPOINTS.getSimilarMovies(id)}
-          category="movie"
-        />
-      </div>
+      <TvShowRow tvShowId={id} noOfSeasons={data.number_of_seasons} />
+      <MovieRow
+        title="Similar Tv shows"
+        fetchUrl={TMDB_ENDPOINTS.getSimilarTvShows(id)}
+        category="tvshow"
+      />
     </div>
   );
 }
 
-export default MovieDetailScreen;
+export default TvshowDetailScreen;
